@@ -14,15 +14,15 @@ import { ProjectComponent } from './Components/project/project.component';
 
 
 const routes: Routes = [
-  { path: 'profile', component: ProfileComponent },
   { path: '', component: DashboardComponent,  canActivate: [AuthGuard]},
-  { path: 'members', component: MembersComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'spaces', component: SpacesComponent },
+  { path: 'project', component: ProjectComponent },
+  { path: 'members', component: MembersComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
-  { path: 'project', component: ProjectComponent },
 ];
 
 @NgModule({
