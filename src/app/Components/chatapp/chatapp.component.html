@@ -1,0 +1,61 @@
+<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+    <h6 class="dropdown-header">
+        Message Center
+    </h6>
+    <div *ngFor='let item of users'>
+        <div *ngIf='item.EmpId!=user.EmpId'>
+            <a class="dropdown-item d-flex align-items-center" data-toggle="modal" data-target="#exampleModal" (click)='setuser(item)'>
+                <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="{{item.Avatar}}" alt="">
+                    <div class="status-indicator bg-success"></div>
+                </div>
+                <div class="font-weight-bold">
+                    <div class="text-truncate">{{item.FirstName}} {{item.LastName}}</div>
+                    <div class="small text-gray-500">Online</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <a class="dropdown-item text-center small text-gray-500">Read More Messages</a>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="{{recipent.Avatar}}" alt="" style='height: 100px; width: 100px;'>
+                    <div class="status-indicator bg-success"></div>
+                </div>
+                <div class="font-weight-bold">
+                    <div class="modal-title" id="exampleModalLabel">{{recipent.FirstName}} {{recipent.LastName}} <br> Online </div>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+            </div>
+            <div class="modal-body">
+                <section class="discussion">
+                    <div class="row" *ngFor='let message of current'>
+                        <div *ngIf='message.EmpId==user.EmpId'>
+                            <div class="col-md-6 mr-6 bubble recipient last" style="margin-left: 230px;">{{message.Message_Content}}</div>
+                        </div>
+                        <div *ngIf='message.EmpId!=user.EmpId'>
+                            <div class="col-md-6 bubble sender last">{{message.Message_Content}}</div>
+                        </div>
+                    </div>
+                </section>
+                <br>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Enter Message" [(ngModel)]="message" required [ngModelOptions]="{standalone: true}">
+                    <button class="btn btn-primary" type="submit"><i class="fab fa-telegram-plane" (click)='sent()'></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,539 @@
+<body id="page-top">
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard()">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">DoStuff</div>
+            </a>
+
+            <!-- Divider -->
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Personal
+            </div>
+
+            <!-- Nav  - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a (click)="dashboard()" class="nav-link collapsed">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span><b>Dashboard</b></span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a (click)="profile()" class="nav-link collapsed">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Company
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" (click)="spaces()">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Spaces</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" (click)="members()">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Member</span>
+                </a>
+            </li>
+
+
+            <!-- Nav Item - Tables -->
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+        <i class="fa fa-bars"></i>
+      </button>
+
+                    <!-- Topbar Search -->
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+              <i class="fas fa-search fa-sm"></i>
+            </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                  </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                            </a>
+                            <app-alertcenter></app-alertcenter>
+                        </li>
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <app-chatapp></app-chatapp>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user?.FirstName}} {{user?.LastName}}</span>
+                                <img class="img-profile rounded-circle" src="{{user.Avatar}}">
+
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#ProfileModal">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" data-toggle="modal" data-target="#SettingModal">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" data-toggle="modal" data-target="#ActivityModal">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid body">
+
+
+                    <div class="intro">
+                        <h1 class="display-4">{{data.Project_Name}}</h1>
+                        <p class="lead">{{data.Project_Description}}</p>
+                        <p class="lead">Created on {{data.Project_Created | date}}</p>
+                        <p class="lead">Duedate on {{data.Project_Updated | date}}</p>
+                        <h4 class="small font-weight-bold">Project Percentage<span class="float-right">{{precent}}</span></h4>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-primary" role="progressbar" [ngStyle]="{'width': precent}" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div style='width: 100%; padding: 20px;'>
+                        <mat-horizontal-stepper #stepper id="stepper" (selectionChange)="selectionprojectChange(stepper)">
+                            <mat-step label="Not Started" class="step-info">
+                                <div></div>
+                            </mat-step>
+                            <mat-step label="OnHold" class="step-info">
+                                <div></div>
+                            </mat-step>
+                            <mat-step label="InProgress" class="step-info">
+                                <div></div>
+                            </mat-step>
+                            <mat-step label="Completed" class="step-info">
+                                <div></div>
+                            </mat-step>
+                        </mat-horizontal-stepper>
+                    </div>
+
+                    <!--
+                    <header class="bg-primary text-white header">
+                        <div class="container-fluid ">
+                            <h1>{{data.Project_Name}}</h1>
+                            <p class="lead">{{data.Project_Description}}</p>
+                            <br>
+                            <h4 class="small font-weight-bold">Project Percentage<span class="float-right">{{precent}}</span></h4>
+                            <div class="progress mb-4">
+                                <div class="progress-bar bg-danger" role="progressbar" [ngStyle]="{'width': precent}" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <br>
+                            <br>
+                        </div>
+                    </header>
+                    <br>
+                    <br> -->
+
+
+
+
+
+
+
+                    <!-- Collapsable Card Example -->
+                    <div *ngFor="let list of lists">
+                        <div *ngIf="data.Pid == list.Pid">
+                            <div class="card shadow mb-4">
+
+                                <!-- Card Header - Accordion -->
+                                <a class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+
+                                    <h6 class="m-0 font-weight-bold text-primary">{{list.List_Name}}</h6>
+                                    <br>
+                                    <p class="intro">{{list.List_Description}}</p>
+                                    <p class="intro">Created on {{list.List_Created | date}}</p>
+
+                                    <button stop-parent class="list-menu" mat-icon-button stop-parent [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                  <mat-icon>more_vert</mat-icon>
+                                  </button>
+                                    <mat-menu #menu="matMenu">
+                                        <button class="normal-menu" mat-menu-item (click)="onDelList(list)">
+                                                <mat-icon>delete</mat-icon>
+                                                <span>Delete</span>
+                                            </button>
+
+                                    </mat-menu>
+                                </a>
+                                <!-- Card Content - Collapse -->
+                                <div class="collapse show" id="collapseCardExample">
+                                    <mat-list class="list">
+                                        <div *ngFor="let task of tasklist">
+                                            <div *ngIf="list.Lid == task.Lid">
+                                                <mat-list-item role="listitem" (click)="openDescription(task)">
+                                                    <mat-icon mat-list-icon>folder</mat-icon>
+                                                    <h4 mat-line>{{task.Task_Name}}</h4>
+                                                    <br>
+
+                                                    <p class="intro">Created on {{task.Task_Created | date}}</p>
+                                                    <br>
+                                                    <p class="intro">Duedate on {{task.Task_Updated | date}}</p>
+                                                    <br>
+                                                    <button mat-icon-button stop-parent [matMenuTriggerFor]="menu" aria-label="Example icon-button with a heart icon">
+                                      <mat-icon>more_vert</mat-icon>
+                                    </button>
+                                                    <button class="task-menu" mat-icon-button stop-parent [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                    <mat-icon>more_vert</mat-icon>
+                                    </button>
+                                                    <mat-menu #menu="matMenu">
+                                                        <button class="normal-menu" mat-menu-item (click)="onDelTask(task)">
+                                                  <mat-icon>delete</mat-icon>
+                                                  <span>Delete</span>
+                                              </button>
+
+                                                    </mat-menu>
+
+                                                </mat-list-item>
+                                            </div>
+                                        </div>
+                                    </mat-list>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.container-fluid -->
+                    </div>
+                </div>
+                <script>
+                    $(function() {
+                        $('body').tooltip({
+                            selector: '[data-toggle="tooltip"]',
+                            container: 'body'
+                        });
+                    });
+                </script>
+                <nav class="float-action-button">
+                    <a class="buttons" title="Tasks" data-toggle="tooltip" data-placement="left" data-toggle="modal" data-target="#newTaskModal">
+                        <i class="fas fa-tasks"></i>
+                    </a>
+                    <a class="buttons" title="List" data-toggle="tooltip" data-placement="left" data-toggle="modal" data-target="#newListModal">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                    <a class="buttons main-button" title="Add" data-toggle="tooltip" data-placement="left">
+                        <i class="fas fa-plus"></i>
+
+                    </a>
+                </nav>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <!-- <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>DoStuff &copy; 2019</span>
+                        </div>
+                    </div>
+                </footer> -->
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded " href="#page-top ">
+            <i class="fas fa-angle-up "></i>
+        </a>
+
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" type="button" data-dismiss="modal" (click)="Logout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="ProfileModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Profile</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                    </div>
+                    <div class="modal-body">
+                        <app-avatar></app-avatar>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="modal" id="newListModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">New List</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                    </div>
+                    <div class="modal-body">
+                        <form [formGroup]="ListForm" (ngSubmit)="newList(ListForm)">
+                            <div class="form-group">
+                                <label for="projectName">List Name</label>
+                                <input type="text" class="form-control" id="projectName" placeholder="Enter List Name" formControlName="List_Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="projectName">Description</label>
+                                <input type="text" class="form-control" id="projectName" placeholder="Description" formControlName="List_Description">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal" id="newTaskModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">New Task</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                    </div>
+                    <div class="modal-body">
+                        <form [formGroup]="TaskForm" (ngSubmit)="newTask(TaskForm)">
+                            <div class="form-group">
+                                <label for="projectName">Task Name</label>
+                                <input type="text" class="form-control" id="projectName" placeholder="Enter Project Name" formControlName="Task_Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="projectName">Description</label>
+                                <input type="text" class="form-control" id="projectName" placeholder="Enter Description" formControlName="Task_Description">
+                            </div>
+                            <div class="form-group">
+                                <label for="projectName">Status</label>
+                                <input type="text" class="form-control" id="projectName" placeholder="Enter Status" formControlName="Task_Status_id">
+                            </div>
+                            <div class="form-group">
+                                <label for="projectName">Due Date</label>
+                                <input type="date" class="form-control" id="date" placeholder="Enter Due Date" formControlName="Task_Duedate">
+                            </div>
+                            <div class="form-group">
+                                <label for="projectName">Comments</label>
+                                <input type="text" class="form-control" id="projectName" placeholder="Enter Comments" formControlName="Task_Comment">
+                            </div>
+                            <div class="form-group">
+                                <!-- <label for="projectName">Task of List</label> -->
+                                <mat-form-field id="projectName">
+                                    <br>
+                                    <mat-label>List</mat-label>
+                                    <mat-select formControlName="Lid">
+                                        <mat-option *ngFor="let list of lists" [value]="list.Lid">
+                                            {{list.List_Name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <ng-template #descriptionTemplate let-data>
+            <div class="row">
+                <div class="col-6">
+                    <mat-vertical-stepper #stepper id="stepper" (selectionChange)="selectionChange(stepper)">
+                        <mat-step label="New" class="step-info">
+                            <div></div>
+                        </mat-step>
+                        <mat-step label="Assigned" class="step-info">
+                            <div></div>
+                        </mat-step>
+                        <mat-step label="InProgress" class="step-info">
+                            <div></div>
+                        </mat-step>
+                        <mat-step label="Resolved" class="step-info">
+                            <div></div>
+                        </mat-step>
+                        <mat-step label="Closed" class="step-info">
+                            <div></div>
+                        </mat-step>
+                    </mat-vertical-stepper>
+                </div>
+                <div class="col-6">
+                    <div class="content">
+                        <form [formGroup]="TaskForm" (ngSubmit)="onSubmit()">
+                            <div class="row justify-content-center">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Description</mat-label>
+                                    <input matInput placeholder="Description about project" formControlName="Task_Description" required>
+                                </mat-form-field>
+                            </div>
+                            <div class="row justify-content-center">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Comments</mat-label>
+                                    <input matInput placeholder="comments" formControlName="Task_Comment" required>
+                                </mat-form-field>
+                            </div>
+                            <div class="row justify-content-center">
+                                <mat-form-field appearance="fill" class="priority">
+                                    <mat-label>Priority</mat-label>
+                                    <mat-select [(value)]="priority_id">
+                                        <mat-option *ngFor="let priority of prioritylist" [value]="priority.priority_id" (click)="Updatetask()">
+                                            {{priority.priority}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <i class="fas fa-sort-numeric-up" matSuffix></i>
+                                </mat-form-field>
+                            </div>
+                            <div class="row justify-content-center">
+                                <mat-form-field class="date">
+                                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" (dateInput)="addEvent('input', $event)" [(ngModel)]="date" [ngModelOptions]="{standalone: true}" (keydown)="onKeydown($event)">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="row justify-content-center">
+                                <mat-form-field>
+                                    <mat-label>Assigned</mat-label>
+                                    <mat-select [(value)]="uid">
+                                        <mat-option *ngFor="let user of users" [value]="user.EmpId" (click)="Updatetask()">
+                                            {{user.FirstName}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="row justify-content-center">
+                                <button mat-raised-button color="primary" type="submit">
+                                    Submit
+                                </button>
+                                <!-- <button mat-raised-button color="primary" type="submit" (click)='bottomSheetRef.close()'>
+                                    Submit
+                                </button> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
